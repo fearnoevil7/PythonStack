@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coding Dojo Survey</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='CSS/the_dojo_survey_css.css')}}">
+    </head>
+    <body>
+        <form action='/users' method='post'>
+            <div class="container">
+                <div><span>Your Name: </span><input type="text" name="name"></div>
+                <div>
+                    <span>Dojo Location: </span><select name= "myLocation">
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Dallas">Dallas</option>
+                        <option value="Chicago">Chicago</option>
+                    </select>
+                </div>
+                <div>
+                    <span>Favorite Language: </span>
+                    <select name= "rap">
+                        <option value="Python">Python</option>
+                        <option value="Mean">Mean</option>
+                        <option value="CSS">CSS</option>
+                        <option value="Html">Html</option>
+                        <option value="JavaScript">JavaScript</option>
+                    </select>
+                </div>
+                <div>
+                        <span id="up1">Comments: </span><textarea name="comments" rows="4" cols="50"></textarea>
+                </div>
+
+                <input type="submit" value="Submit" id="buttonski">
+            </div>
+        </form>
+    </body>
+</html>

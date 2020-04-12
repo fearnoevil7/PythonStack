@@ -1,0 +1,132 @@
+1)  Book.objects.create(title = "C Sharp", desc = "c sharp is a coding language")
+<Book: Book object>
+>>> Book.objects.create(title = "Java", desc = "java is a coding language")
+<Book: Book object>
+>>> Book.objects.create(title = "Python", desc = "python is a coding language")
+<Book: Book object>
+>>> Book.objects.create(title = "PHP", desc = "php is a coding language")
+<Book: Book object>
+>>> Books.objects.create(title = "Ruby", desc = "ruby is a coding language")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Books' is not defined
+>>> Book.objects.create(title = "Ruby", desc = "ruby is a coding language")
+<Book: Book object>
+
+2) Author.objects.create(first_name = "Jane", last_name = "Austen")
+<Author: Author object>
+>>> Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+<Author: Author object>
+>>> Author.objects.create(first_name = "Fyodor", last_name = "Dostoevkst")
+<Author: Author object>
+>>> Author.objects.create(first_name = "William", last_name = "Shakespeare")
+<Author: Author object>
+>>> Author.objects.create(first_name = "Lau", last_name = "Tzu")
+<Author: Author object>
+
+3) c = Book.objects.get(id=1)
+>>> c.title
+'C Sharp'
+>>> c.title = "C#"
+>>> c.title
+'C#'
+
+4) b = Author.objects.get(last_name="Shakespeare")
+>>> b.first_name
+'William'
+>>> b.first_name = Bill
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Bill' is not defined
+>>> b.first_name = "Bill"
+>>> b.first_name
+'Bill'
+
+5) first_author = Author.objects.first()
+>>> first_author.first_name
+'Jane'
+>>> first_book = Book.objects.first()
+>>> first_book.title
+'C Sharp'
+>>> second_book = Book.objects.get(id=2)
+>>> second_book.title
+'Java'
+>>> first_author.book.add(first_book)
+>>> first_author.book.title
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ManyRelatedManager' object has no attribute 'title'
+>>> first_author.book.all()
+<QuerySet [<Book: Book object>]>
+>>> first_author.book.add(second_book)
+>>> first_author.book.all()
+<QuerySet [<Book: Book object>, <Book: Book object>]>
+
+6) second_author = Author.objects.get(id=2)
+>>> second_author.last_name
+'Dickinson'
+third_book = Book.objects.get(id=3)
+>>> third_book.title
+'Python'
+>>> second_author.book.add(first_book)
+>>> second_author.book.add(second_book)
+>>> second_author.book.add(third_book)
+>>> second_author.book.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+7) third_author = Author.objects.get(id=3)
+>>> third_author.last_name
+'Dostoevkst'
+>>> fourth_book = Book.objects.get(id=4)
+>>> fourth_book.title
+'PHP'
+>>> third_author.book.add(first_book)
+>>> third_author.book.add(second_book)
+>>> third_author.book.add(third_book)
+>>> third_author.book.add(fourth_book)
+>>> third_author.book.all
+<bound method BaseManager.all of <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x105b0d860>>
+>>> third_author.book.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+8) fourth_author = Author.objects.get(id=4)
+>>> fourth_author.last_name
+'Shakespeare'
+>>> fifth_book = Book.objects.last()
+>>> fifth_book.title()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'str' object is not callable
+>>> fifth_book.title
+'Ruby'
+>>> fourth_author.book.add(first_book)
+>>> fourth_author.book.add(second_book)
+>>> fourth_author.book.add(third_book)
+>>> fourth_author.book.add(fourth_book)
+>>> fourth_author.book.add(fifth_book)
+>>> fourth_author.book.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+9) third_book.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author object>]>
+
+10) third_book.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author object>]>
+>>> third_book.authors.remove(second_author)
+>>> third_book.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>]>
+
+11) fifth_author = Author.objects.last()
+>>> fifth_author.last_name
+'Tzu'
+>>> second_book.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author object>, <Author: Author object>]>
+>>> second_book.authors.add(fifth_author)
+>>> second_book.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author object>, <Author: Author object>, <Author: Author object>]>
+
+12) third_author.book.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+13) fifth_book.authors.all()
+<QuerySet [<Author: Author object>]>

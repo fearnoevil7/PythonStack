@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Checkmate</title>
+        <link rel="stylesheet" type="text/css" href= "{{url_for('static', filename='CSS/checkerboard_css.css')}}">
+    </head>
+    <body>
+            <table>
+            {% for i in range(rows): %}
+                <tr>
+                    {% for j in range(columns): %}
+                    <td class="black"></td>
+                    <td class="grey"></td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for j in range(columns): %}
+                    <td class="grey"></td>
+                    <td class="black"></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+    </body>
+</html>

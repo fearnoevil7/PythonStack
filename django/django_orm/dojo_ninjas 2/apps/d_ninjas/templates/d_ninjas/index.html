@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Add A Dojo</h2>
+    <form action="/process" method='POST'>
+        {% csrf_token %}
+        <div class="Information">
+            <div class='data'>
+                <p>Name</p>
+                <input type="text" name="name">
+            </div>
+            <div class='data'>
+                <p>City</p>
+                <input type="text" name="city">
+                <p>State</p>
+                <input type="text" name="state">
+            </div>
+            <input class='submit' type="submit" name="add">
+        </div>
+    </form>
+    <div>
+        <ul>
+            {% for d in Dojo %}
+            <li>{{d.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+        <h2>Add A Ninja</h2>
+        <form action="/add_ninja" method='POST'>
+            {% csrf_token %}
+            <div class="Information">
+                <div class='data'>
+                    <p>First Name</p>
+                    <input type="text" name="first_name">
+                </div>
+                <div class='data'>
+                        <p>Last Name</p>
+                        <input type="text" name="last_name">
+                    </div>
+                </div>
+                <label for="the_dojo">Dojo</label>
+                <select name="the_dojo">
+                    {% for d in Dojo %}
+                    <option value="{{d.id}}">{{d.name}}</option>
+                    {% endfor %}
+                </select>
+                <input class='submit' type="submit" name="add">
+            </div>
+        </form>
+        {% for d in Dojo %}
+        <p>Ninjas at the {{d.name}}</p>
+        <ul>{% for ninja in d.ninjas.all %}
+            <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+</body>
+</html>

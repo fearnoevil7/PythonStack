@@ -1,0 +1,47 @@
+1) >>> Dojo.objects.create(name = "Coding Dojo", city = "Dallas", state = "Texas")
+<Dojo: Dojo object>
+ Dojo.objects.create(name = "Samurai Dojo", city = "Los Angeles", state = "California")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name = "Ninja Dojo", city = "New York City", state = "New York")
+<Dojo: Dojo object>
+
+2) all_dojos = Dojo.objects.all()
+>>> all_dojos.delete()
+(3, {'projectApp.Ninja': 0, 'projectApp.Dojo': 3})
+
+3) Dojo.objects.create(name = "Awesome Dojo", city = "Dallas", state="Texas")
+<Dojo: Dojo object>
+Dojo.objects.create(name = "Fantastic Dojo", city = "Los Angeles", state = "California")
+<Dojo: Dojo object>
+Dojo.objects.create(name = "Dynamic Dojo", city = "New York City", state = "New York")
+<Dojo: Dojo object>
+
+4) Ninja.objects.create(dojo = awesome_dojo, first_name = "Floyd", last_name = "Mayweather")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = awesome_dojo, first_name = "Nonito", last_name = "Donaire")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = awesome_dojo, first_name = "Inoue", last_name = "Naoya")
+<Ninja: Ninja object>
+
+5) Ninja.objects.create(dojo = fantastic_dojo, first_name = "Walker", last_name = "Smith")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = fantastic_dojo, first_name = "Jay", last_name = "Sanchez")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = fantastic_dojo, first_name = "Jose", last_name = "Napoles")
+<Ninja: Ninja object>
+
+6) Ninja.objects.create(dojo = dynamic_dojo, first_name = "Wilfredo", last_name = "Gomez")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = dynamic_dojo, first_name = "Aaron", last_name = "Pryor")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo = dynamic_dojo, first_name = "Tito", last_name = "Trinidad")
+<Ninja: Ninja object>
+
+7) Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+
+8) Dojo.objects.last().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+
+9)Dojo.objects.create(name = "Royal Dojo", city = "Miami", state = "Florida", desc = "new dojo")
+<Dojo: Dojo object>

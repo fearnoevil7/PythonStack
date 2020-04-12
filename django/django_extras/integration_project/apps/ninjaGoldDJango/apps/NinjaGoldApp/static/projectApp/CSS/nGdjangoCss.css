@@ -1,0 +1,21 @@
+div{
+    display: inline-block
+}
+.score{
+    display: block;
+}
+
+.mini{
+    margin: 0px 50px 0px 50px;
+}
+.locations{
+    margin: 200px 0px 0px 475px;
+}
+textarea{
+    display: block;
+    margin: 0px 0px 0px 45px;
+}
+h6{
+    margin: 50px 0px 0px 45px;
+    font-size: 16pt;
+}

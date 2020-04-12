@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Playground Flask Assignment</title>
+        <style>
+            .container{
+                width: 100%;
+                height: 100%;
+            }
+            .box{
+                display: inline-block;
+                background-color: {{color}};
+                width: 300px;
+                height: 300px;
+                margin: 100px 0px 0px 100px;
+            }
+            p {
+                text-align: center;
+                margin: 50px 0px 0px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Welcome!</p>
+        <div class="container">
+            {% for i in range(0, box_amount) %}:
+            <div class="box"></div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ninja Gold 2.0 Django Edition</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'projectApp/CSS/nGdjangoCss.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="score">
+                <h1>Your Gold: {{request.session.amount}}</h1>
+                <form action="/clear">
+                    <input type="submit" value="clear">
+                </form>
+            </div>
+            <div class="locations">
+                <div class="mini">
+                    <h2>Farm</h2>
+                    <p>earns 10-20 gold</p>
+                    <form action="/transactions" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="facility" value="farm">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="mini">
+                    <h2>Cave</h2>
+                    <p>earns 5-10 gold</p>
+                    <form action="/transactions" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="facility" value="cave">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="mini">
+                    <h2>House</h2>
+                    <p>earns 2-5 gold</p>
+                    <form action="/transactions" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="facility" value="house">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="mini">
+                    <h2>Casino</h2>
+                    <p>earns/takes 0-50 gold</p>
+                    <form action="/transactions" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="facility" value="casino">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <h6>Activities:</h6>
+                <textarea cols="95" rows="10"></textarea>
+            </div>
+            <div></div>
+        </div>
+    </body>
+</html>

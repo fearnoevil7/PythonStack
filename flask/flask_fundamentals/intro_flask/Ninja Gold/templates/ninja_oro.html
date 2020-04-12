@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ninja Gold Assignment</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='CSS/ninja_oroCss.css')}}">
+    </head>
+    <body>
+        <div class="container">
+            <!-- <form>
+                <span class="goldCount">Your Gold:</span><input type="text" name="yourGold">
+            </form> -->
+            <span>Your Gold: </span> {{ session['userGold'] }}
+            <div class="mini_container">
+                <div class="lil_wrappers">
+                    <form action="/activities" method="post">
+                        <h4>Farm</h4>
+                        <h6>(earns 10-20 gold)</h6>
+                        <input type="hidden" name="building" value="farm">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="lil_wrappers">
+                    <form action="/activities" method="post">
+                        <h4>Cave</h4>
+                        <h6>(earns 5-10 gold)</h6>
+                        <input type="hidden" name="building" value="cave">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="lil_wrappers">
+                    <form action="/activities" method="post">
+                        <h4>House</h4>
+                        <h6>(earns 2-5 gold)</h6>
+                        <input type="hidden" name="building" value="house">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="lil_wrappers">
+                    <form action="/activities" method="post">
+                        <h4>Casino</h4>
+                        <h6>earns/takes 0-50 gold</h6>
+                        <input type="hidden" name="building" value="casino">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+            
+            <div>
+                <form>
+                    <span class="activitiesLogTitle">Activities:</span><textarea name="activities_log" cols="100" rows="10"></textarea>
+                </form>
+            </div>
+            <form action="/clear">
+                <input type="submit" value="Try Again">
+            </form>
+        </div>
+    </body>
+</html>

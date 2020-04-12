@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random Word Generator</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'projectApp/CSS/rWdCss.css' %}">
+    </head>
+    <body>
+        <p>Random Word (attempt #{{request.session.count}})</p>
+        <div class="word">
+            <p class="rwd">{{ random }}</p>
+        </div>
+        <div class="myButton">
+            <form>
+                <input type="submit" value="Generate">
+            </form>
+            <form action="/destroy">
+                <input type="submit" value="Destroy">
+            </form>
+        </div>
+    </body>
+</html>

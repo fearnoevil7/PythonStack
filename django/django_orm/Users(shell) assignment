@@ -1,0 +1,45 @@
+1) from apps.projectApp.models import*
+>>> user.objects.create(first_name = "Walker", last_name = "Smith", email_address = "walkersmith@yahoo.com", age = 25)
+<user: user object>
+>>> user.objects.create(first_name = "Roberto", last_name = "Duran", email_address = "manosdepierda@yahoo.com", age = 28)
+<user: user object>
+>>> user.objects.create(first_name = "Manny", last_name = "Pacquiao", email_address = "pacman@yahoo.com", age = 40)
+<user: user object>
+
+2) all = user.objects.all()
+>>> all
+<QuerySet [<user: user object>, <user: user object>, <user: user object>]>
+
+3) primero = user.objects.first()
+>>> primero
+<user: user object>
+
+4) ultimo = user.objects.last()
+>>> ultimo
+<user: user object>
+
+5) change.first_name
+'Manny'
+>>> change = user.objects.get(id=3)
+>>> change.first_name
+'Manny'
+>>> change.last_name
+'Pacquiao'
+>>> change.last_name = "Pancakes"
+>>> change.last_name 
+'Pancakes'
+
+6) destroy = user.objects.get(id=2)
+>>> destroy.last_name
+'Duran'
+>>> destroy.delete()
+
+7) <QuerySet [<user: user object>, <user: user object>]>
+>>> p = user.objects.all().order_by("first_name")
+>>> p
+<QuerySet [<user: user object>, <user: user object>]>
+
+
+8) >>> e = user.objects.all().order_by("-first_name")
+>>> e
+<QuerySet [<user: user object>, <user: user object>]>

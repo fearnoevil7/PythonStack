@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            {% if page == "books" %}
+            <div>
+                <h1>ID: {{Book.id}}</h1>
+                <h1>{{ Book.title }}</h1>
+                <p>Description: {{ Book.desc }}</p>
+                </div>
+            <div>
+                <ul>
+                    {% for a in authors %}
+                    <li>{{a.first_name}} {{a.last_name}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <form action="/books/appendProcess/{{Book.id}}" method="POST">
+                    {% csrf_token %}
+                    <select name="authorId">
+                        {% for p in appendAuthor %}
+                        <option value="{{p.id}}">{{p.first_name}} {{p.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="add">
+                </form>
+            </div>
+            <div>
+                {% endif %}
+                {% if page == "authors" %}
+            <div>
+                <h1>ID: {{Author.id}}</h1>
+                <h1>{{Author.first_name}} {{Author.last_name}}</h1>
+                <p>Description: {{ Author.notes }}</p>
+            </div>
+            <div>
+                <ul>
+                    {% for b in Book %}
+                    <li>{{b.title}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <form action="/authors/appendProcess/{{Author.id}}" method="POST">
+                    {% csrf_token %}
+                    <select name="bookId">
+                        {% for z in appendBook %}
+                        <option value="{{z.id}}">{{z.title}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="add">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

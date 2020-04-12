@@ -1,0 +1,19 @@
+
+.mini_container{
+    margin: 50px 0px 100px 100px;
+}
+.lil_wrappers{
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    /* background-color: aqua; */
+    border: 3px solid black;
+    text-align: center;
+    margin: 0px 0px 0px 50px;
+}
+.activitiesLogTitle{
+    display: block;
+}
+.goldCount{
+    margin: 50px 0px 0px 30px;
+}

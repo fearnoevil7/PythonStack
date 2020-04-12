@@ -1,0 +1,28 @@
+/* *{
+    outline: 3px dotted fuchsia;
+} */
+div{
+    margin: 40px 0px 0px 0px;
+}
+form{
+    display: inline-block;
+    margin: 100px 0px 0px 400px;
+}
+.container{
+    border: 3px solid black;
+}
+span{
+    margin: 0px 0px 0px 20px;;
+}
+textarea{
+    margin: 0px 20px 0px 20px;
+}
+#up1{
+    display: block;
+}
+#buttonski{
+    margin: 0px 0px 40px 350px;
+}
+/* p{
+    margin: 0px 0px 0px 250px;
+} */

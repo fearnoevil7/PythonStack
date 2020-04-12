@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'books_authors_app/css/mycss.css' %}">
+    </head>
+    <body>
+        {% if page == "books" %}
+        <div class="container">
+            <h1>Add a Book</h1>
+            <div class="info">
+                <form action="books/process" method="post">
+                    {% csrf_token %}
+                    <div class="a">
+                        <span>Title:</span><input type="text" name="bTitle">
+                    </div>
+                    <div class="a">
+                        <span>Description:</span><input type="text" name="bDesc">
+                    </div>
+                    <div class="a">
+                        <input type="submit" value="Add">
+                    </div>
+                </form>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in Book %}
+                        <tr>
+                            <td>{{b.id}}</td>
+                            <td>{{b.title}}</td>
+                            <td><a href="books/description/{{b.id}}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        {% if page == "authors" %}
+        <div class="container">
+            <h1>Add a Author</h1>
+            <div class="info">
+                <form action="authors/process" method="post">
+                    {% csrf_token %}
+                    <div class="a">
+                        <span>First Name:</span><input type="text" name="first_name">
+                    </div>
+                    <div class="a">
+                        <span>Last Name:</span><input type="text" name="last_name">
+                    </div>
+                    <div class="a">
+                        <span>Notes:</span><input type="text" name="notes">
+                    </div>
+                    <div class="a">
+                        <input type="submit" value="Add">
+                    </div>
+                </form>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in Author %}
+                        <tr>
+                            <td>{{a.id}}</td>
+                            <td>{{a.first_name}} {{a.last_name}}</td>
+                            <td><a href="authors/description/{{a.id}}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </body>
+</html>
